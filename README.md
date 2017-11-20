@@ -15,19 +15,19 @@ sh EXECUTE_ME_FIRST.sh
 #### What you will get
 The api will respond to
 ```
-*SELECT*
+⋅⋅*SELECT
 GET -> curl -X GET -i http://api.dev/getbooks/{offset}/{limit} (default: 0 - offset || 10 - limit)
 GET -> curl -X GET -i http://api.dev/obtain/{id}
 POST -> curl -X POST -i http://api.dev/obtain/{id}
 GET -> curl -X GET http://api.dev/books/{format}/{id} (id and format are optional)
 
-*INSERT*
+⋅⋅*INSERT
 POST -> curl -X POST -H "Content-Type: application/json" -d '{"title":"My New Book","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.dev/book
 
-*UPDATE*
+⋅⋅*UPDATE
 PUT -> curl -X PUT -H "Content-Type: application/json" -d '{"title":"PHP2","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.dev/bookedit/6
 
-*DELETE*
+⋅⋅*DELETE
 DELETE -> curl -X DELETE -i http://api.dev/bookdel/{id}
 ```
 
