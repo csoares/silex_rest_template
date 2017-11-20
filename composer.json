@@ -1,0 +1,19 @@
+{
+    "name": "vagrant/silexrest",
+    "require": {
+        "silex/silex": "^2.2",
+        "symfony/serializer": "^3.3"
+    },
+    "scripts": {
+        "run": [
+            "echo 'Started web server on http://localhost:8888'",
+            "php -S localhost:8888 -t web"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Christophe Soares",
+            "email": "soareschristophe@gmail.com"
+        }
+    ]
+}
