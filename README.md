@@ -5,7 +5,7 @@ A simple silex skeleton application for writing RESTful API. Developed and maint
 **This project may be reused to write a REST api with Silex PHP micro-framework**
 
 #### How do I run it?
-After download the last [version](https://github.com/csoares/silexrest), from the root folder of the project, run the following command to install the php dependencies, and import some data to your mysql.
+After download the last [version](https://github.com/csoares/silexrest_template), from the root folder of the project, run the following command to install the php dependencies, and import some data to your mysql.
 You may reused the vagrant configuration provided [here](https://github.com/csoares/vagrant-php7) to obtain a Linux virtual machine with PHP 7.0+MySQL.
 
 ```
