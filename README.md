@@ -19,7 +19,7 @@ The api will respond to
 GET -> curl -X GET -i http://api.dev/getbooks/{offset}/{limit} (default: 0 - offset || 10 - limit)
 GET -> curl -X GET -i http://api.dev/obtain/{id}
 POST -> curl -X POST -i http://api.dev/obtain/{id}
-GET -> curl -X GET http://api.dev/books/{format}/{id} (id and format are optional)
+GET -> curl -X GET http://api.dev/books/{format}/{offset} (offset and format are optional)
 
 * INSERT
 POST -> curl -X POST -H "Content-Type: application/json" -d '{"title":"My New Book","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.dev/book
