@@ -73,7 +73,7 @@ $app->get('/getbooks/{offset}/{limit}', function ($offset, $limit) use ($app, $d
     TODO
     */
 
-    return $app->json($livros);
+    return $app->json($books);
 })
 ->value("offset",0)
 ->value("limit",10)
