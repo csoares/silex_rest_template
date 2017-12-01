@@ -36,12 +36,12 @@ $app->match('/obtain/{id}', function ($id) use ($app, $dbh) {
     $sth = $dbh->prepare('SELECT id, title, author, isbn FROM books WHERE id=?');
     $sth->execute(array($id));
 
-    $livro = $sth->fetchAll(PDO::FETCH_ASSOC);
-    if(empty($livro)) {
+    $book = $sth->fetchAll(PDO::FETCH_ASSOC);
+    if(empty($book)) {
         return $app->json(array("result"=>"inexistant book id - $id"));
     }
 
-    return $app->json($livro);
+    return $app->json($book);
 })
 ->method('GET|POST') // you can use get or post for this route
 ->value("id", 1) //set a default value
