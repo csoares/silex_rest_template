@@ -18,6 +18,7 @@ if [ "$RESP" = "y" ]; then
     ServerName api.dev
 </VirtualHost>
 EOF
-    service apache2 stop
-    service apache2 start
+    sudo apache2ctl graceful
+    sudo service apache2 stop
+    sudo service apache2 start
 fi
