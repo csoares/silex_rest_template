@@ -10,15 +10,22 @@ echo
 mysql -u$username  -p$password < db.sql 2>/dev/null
 composer install
 
-read -p "Do you wish to install the virtual host in apache2? (y/n)?" RESP
-if [ "$RESP" = "y" ]; then
+
+CURRENT=`pwd`
+BASENAME=`basename "$CURRENT"`
+
+count=$(grep $BASENAME /etc/apache2/sites-available/default.conf | wc -l)
+if [ $count -gt 0 ]
+then
+    echo already exists
+else
     cat << EOF | sudo tee -a /etc/apache2/sites-available/default.conf
 <VirtualHost *:80>
-    DocumentRoot /var/www/app/silexrest/public
-    ServerName api.dev
+    DocumentRoot /var/www/app/$BASENAME/public
+    ServerName api.test
 </VirtualHost>
 EOF
-    sudo apache2ctl graceful
-    sudo service apache2 stop
-    sudo service apache2 start
+    sudo apache2ctl graceful 2>/dev/null
+    sudo service apache2 stop 2>/dev/null
+    sudo service apache2 start 2>/dev/null
 fi
