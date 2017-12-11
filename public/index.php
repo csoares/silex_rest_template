@@ -31,7 +31,7 @@ $app->get('/', function () use ($app, $dbh) {
 
 
 // SELECT
-// e.g., curl -X GET -i http://api.dev/obtain/1 OR curl -X POST -i http://api.dev/obtain/1
+// e.g., curl -X GET -i http://api.test/obtain/1 OR curl -X POST -i http://api.dev/obtain/1
 $app->match('/obtain/{id}', function ($id) use ($app, $dbh) {
     $sth = $dbh->prepare('SELECT id, title, author, isbn FROM books WHERE id=?');
     $sth->execute(array($id));
@@ -49,7 +49,7 @@ $app->match('/obtain/{id}', function ($id) use ($app, $dbh) {
 
 
 
-// e.g., curl -X GET http://api.dev/books/xml/1 OR curl -X GET http://api.dev/books/json
+// e.g., curl -X GET http://api.test/books/xml/1 OR curl -X GET http://api.dev/books/json
 $app->get("/books/{_format}/{offset}", function (Request $request, $offset) use ($app, $dbh) {
     $sth = $dbh->prepare('SELECT id, title, author, isbn FROM books LIMIT 10 OFFSET :offset');
     $sth->bindValue(":offset", (int) $offset , PDO::PARAM_INT);
@@ -66,7 +66,7 @@ $app->get("/books/{_format}/{offset}", function (Request $request, $offset) use 
 ->value("offset", 0) // define the default value for offset
 ->assert("offset", "\d+"); // verify that id is a digit
 
-// e.g., curl -X GET -i http://api.dev/getbooks/2/5
+// e.g., curl -X GET -i http://api.test/getbooks/2/5
 $app->get('/getbooks/{offset}/{limit}', function ($offset, $limit) use ($app, $dbh) {
     // get all the books
     /*
@@ -82,7 +82,7 @@ $app->get('/getbooks/{offset}/{limit}', function ($offset, $limit) use ($app, $d
 
 
 // INSERT
-// e.g., curl -X POST -H "Content-Type: application/json" -d '{"title":"My New Book","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.dev/book
+// e.g., curl -X POST -H "Content-Type: application/json" -d '{"title":"My New Book","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.test/book
 $app->post('/book', function(Request $request) use ($app, $dbh) {
     $data = json_decode($request->getContent(), true); // load the received json data
 
@@ -102,7 +102,7 @@ $app->post('/book', function(Request $request) use ($app, $dbh) {
 // UPDATE
 
 
-// e.g., curl -X PUT -H "Content-Type: application/json" -d '{"title":"PHP2","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.dev/bookedit/6
+// e.g., curl -X PUT -H "Content-Type: application/json" -d '{"title":"PHP2","author":"Douglas","isbn":"111-11-1111-111-1"}' -i http://api.test/bookedit/6
 $app->put('/bookedit/{id}', function(Request $request, $id) use ($app, $dbh) {
     $data = json_decode($request->getContent(), true);
     /*
@@ -116,7 +116,7 @@ $app->put('/bookedit/{id}', function(Request $request, $id) use ($app, $dbh) {
 // DELETE
 
 
-// e.g., curl -X DELETE -i http://api.dev/bookdel/6
+// e.g., curl -X DELETE -i http://api.test/bookdel/6
 $app->delete('/bookdel/{id}', function($id) use ($app, $dbh) {
   /*
   TODO
